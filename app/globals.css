@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+:root {
+  /* ============================================================
+     Sitio público — paleta Ladurée. Usar EXACTAMENTE estos colores
+     en cualquier componente de app/(site) y components/site.
+     ============================================================ */
+  --color-cream: #fff8f2;
+  --color-pink: #f7d6e6;
+  --color-lavender: #e9e2ff;
+  --color-sage: #dce9df;
+  --color-sand: #f3e7d3;
+  --color-gold: #c8a96a;
+  --color-text: #444444;
+  --color-bg-alt: #f8f5f1;
+  --color-rose: #ebcfcf;
+  --color-moss: #b7c5b0;
+  --color-taupe: #d8c5b2;
+  --color-gold-accent: #c8a96a;
+
+  /* ============================================================
+     Panel admin — NO se toca el diseño del admin en este rediseño.
+     Estos tokens quedan exactamente como estaban para que
+     components/admin y app/admin sigan renderizando igual.
+     ============================================================ */
+  --color-warm-white: #ffffff;
+  --color-brown: #2d2420;
+  --color-soft: #ebe0d3;
+  --color-caramel: #c98e93;
+  --color-chocolate: #8b4a52;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-pink: var(--color-pink);
+  --color-lavender: var(--color-lavender);
+  --color-sage: var(--color-sage);
+  --color-sand: var(--color-sand);
+  --color-gold: var(--color-gold);
+  --color-text: var(--color-text);
+  --color-bg-alt: var(--color-bg-alt);
+  --color-rose: var(--color-rose);
+  --color-moss: var(--color-moss);
+  --color-taupe: var(--color-taupe);
+  --color-gold-accent: var(--color-gold-accent);
+
+  --color-warm-white: var(--color-warm-white);
+  --color-brown: var(--color-brown);
+  --color-soft: var(--color-soft);
+  --color-caramel: var(--color-caramel);
+  --color-chocolate: var(--color-chocolate);
+
+  /* Admin sigue usando --font-sans (Jakarta) como default del body global */
+  --font-sans: var(--font-jakarta);
+  /* Sitio público: utilidades font-accent (Playfair) y font-body (DM Sans) */
+  --font-accent: var(--font-playfair);
+  --font-body: var(--font-dmsans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Default global — usado por el panel admin. El sitio público
+   sobrescribe bg/color/font explícitamente en su propio <body>. */
+body {
+  background: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-pink);
+  color: var(--color-text);
+}
+
+a,
+button {
+  transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease, opacity 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+/* ============================================================
+   Sitio público — sistema de scroll reveal (IntersectionObserver)
+   ============================================================ */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+}
+.reveal-fade.is-visible {
+  opacity: 1;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 800ms ease-out, transform 800ms ease-out;
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-line {
+  width: 0;
+  transition: width 500ms ease-out;
+}
+.reveal-line.is-visible {
+  width: 60px;
+}
+
+/* ============================================================
+   Parallax sutil (solo desktop — ver media query abajo)
+   ============================================================ */
+.parallax-bg {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 1023px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* ============================================================
+   Fade-in de página al navegar (App Router no remonta el layout,
+   así que el fade se dispara por key=pathname en un wrapper cliente)
+   ============================================================ */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-fade-in {
+  animation: page-fade-in 400ms ease-out;
+}
+
+/* ============================================================
+   Menú mobile — overlay con entrada escalonada de links
+   ============================================================ */
+@keyframes mobile-menu-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mobile-link-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.mobile-menu-overlay {
+  animation: mobile-menu-fade 300ms ease-out;
+}
+.mobile-menu-link {
+  opacity: 0;
+  animation: mobile-link-in 400ms ease-out forwards;
+}
+
+/* Entrada escalonada genérica (hero, etc.) — mismo keyframe que el menú mobile */
+.stagger-in {
+  opacity: 0;
+  animation: mobile-link-in 800ms ease-out forwards;
+}
+
+/* ============================================================
+   Inputs estilo minimal (solo borde inferior) — formulario de cotización
+   ============================================================ */
+.field-underline {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-gold-accent);
+  opacity: 1;
+  padding: 0.625rem 0.125rem;
+  color: var(--color-text);
+  transition: border-color 300ms ease;
+}
+.field-underline:focus {
+  outline: none;
+  border-bottom-color: var(--color-gold);
+  border-bottom-width: 2px;
+}
+
+/* ============================================================
+   Botón flotante de WhatsApp — entrada retrasada
+   ============================================================ */
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.fab-in {
+  opacity: 0;
+  animation: fab-in 500ms ease-out 1.5s forwards;
+}
+
+/* ============================================================
+   Lightbox de galería — apertura con scale + fade, fondo con blur
+   ============================================================ */
+.lightbox-dialog {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms ease-out, transform 300ms ease-out, overlay 300ms ease-out allow-discrete, display 300ms ease-out allow-discrete;
+}
+.lightbox-dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+@starting-style {
+  .lightbox-dialog[open] {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+.lightbox-dialog::backdrop {
+  background: rgba(68, 68, 68, 0.7);
+  backdrop-filter: blur(10px);
+  opacity: 1;
+  transition: opacity 300ms ease-out, display 300ms allow-discrete, overlay 300ms allow-discrete;
+}
+@starting-style {
+  .lightbox-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Carruseles — flechas de navegación + chevrons hechos con CSS
+   ============================================================ */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-50%);
+  transition: background-color 200ms ease, opacity 200ms ease;
+}
+.carousel-arrow:hover:not(:disabled) {
+  background: var(--color-gold);
+}
+.carousel-arrow:hover:not(:disabled) .carousel-chevron {
+  border-color: var(--color-cream);
+}
+.carousel-arrow:disabled {
+  opacity: 0.3;
+}
+
+.carousel-chevron {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  border-color: var(--color-text);
+  transition: border-color 200ms ease;
+}
+.carousel-chevron-left {
+  transform: rotate(135deg);
+  margin-left: 3px;
+}
+.carousel-chevron-right {
+  transform: rotate(-45deg);
+  margin-right: 3px;
+}
+
+.carousel-dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 9999px;
+  background: #d9d9d9;
+  transition: all 200ms ease;
+}
+.carousel-dot.is-active {
+  height: 8px;
+  width: 8px;
+  background: var(--color-gold);
+}
