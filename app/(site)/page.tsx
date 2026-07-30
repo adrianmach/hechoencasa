@@ -40,26 +40,26 @@ export default async function HomePage() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.25))',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.35))',
           }}
         />
 
         <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-5 pb-12 text-center md:items-start md:pb-16 md:text-left">
           <p
             className="stagger-in font-body text-xs uppercase tracking-[0.2em] text-cream"
-            style={{ animationDelay: '200ms' }}
+            style={{ animationDelay: '200ms', textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
           >
             Pastelería artesanal
           </p>
           <h1
             className="stagger-in mt-3 max-w-xl font-accent text-4xl text-cream md:text-6xl"
-            style={{ animationDelay: '400ms' }}
+            style={{ animationDelay: '400ms', textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
           >
             {config.hero.title}
           </h1>
           <p
             className="stagger-in mt-4 max-w-md font-body text-cream/90"
-            style={{ animationDelay: '600ms' }}
+            style={{ animationDelay: '600ms', textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
           >
             {config.hero.subtitle}
           </p>
@@ -173,7 +173,7 @@ export default async function HomePage() {
             </Reveal>
             <Reveal variant="up" delay={100}>
               <h2 className="mt-3 font-accent text-3xl text-text md:text-4xl">
-                Hecho con <em className="italic">cariño</em>, hecho en casa
+                Hecho con <em className="italic">dedicación</em>, hecho en casa
               </h2>
             </Reveal>
             <Reveal variant="fade" delay={200}>

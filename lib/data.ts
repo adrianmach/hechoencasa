@@ -21,7 +21,8 @@ const DEFAULT_CONFIG: SiteConfigMap = {
     instagram: '',
     tiktok: '',
     email: '',
-    delivery_zone: '',
+    delivery_zone:
+      'Zona de retiro (Pick up): Parque Batlle. Zona de envío: Montevideo (sujeto a disponibilidad y cotización).',
     hours: '',
     neighborhood: '',
   },
@@ -32,14 +33,14 @@ const DEFAULT_CONFIG: SiteConfigMap = {
     lead_time_postres: '',
     lead_time_alfajores: '',
     urgencias_note: '',
-    payment_methods: [],
+    payment_methods: ['Efectivo', 'Transferencia bancaria'],
   },
   faq: [],
   quote_form: {
     tortaSizes: [],
     postreSizes: [],
     fillings: [],
-    coatings: [],
+    coatings: ['Buttercream', 'Ganache', 'Crema', 'Sin cobertura'],
   },
 }
 

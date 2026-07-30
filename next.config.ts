@@ -5,6 +5,7 @@ const supabaseHostname = process.env.NEXT_PUBLIC_SUPABASE_URL
   : undefined;
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   images: {
     // El optimizador de Next.js (/_next/image) intenta buscar la imagen original
     // antes de servirla. En este entorno, las peticiones a images.unsplash.com

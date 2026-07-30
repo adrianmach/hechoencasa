@@ -39,9 +39,9 @@ export function Footer({ contact }: { contact: ContactConfig }) {
           <Image
             src="/logo.png"
             alt="Hecho en Casa"
-            width={80}
-            height={80}
-            className="h-[80px] w-[80px] object-contain"
+            width={120}
+            height={120}
+            className="h-[120px] w-[120px] object-contain brightness-0 invert"
           />
         </div>
         <p className="mt-2 text-center font-body text-xs uppercase tracking-[0.15em] text-cream/60">

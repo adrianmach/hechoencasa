@@ -57,6 +57,9 @@ export default async function RootLayout({
 
   return (
     <html lang="es" className={`${playfair.variable} ${dmSans.variable} h-full`}>
+      <head>
+        <meta name="vercel-toolbar" content="disabled" />
+      </head>
       <body className="flex min-h-full flex-col bg-cream font-body text-text antialiased">
         <Header />
         <main className="flex-1">

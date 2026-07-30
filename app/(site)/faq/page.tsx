@@ -81,6 +81,19 @@ export default async function FaqPage() {
             </p>
             <p className="mt-3">{config.delivery.payment_methods.join(', ')}</p>
           </Reveal>
+          <Reveal
+            variant="up"
+            delay={200}
+            className="bg-cream p-6 text-center sm:col-span-2 md:text-left"
+          >
+            <p className="font-body text-xs uppercase tracking-[0.15em] text-gold">
+              Zona de retiro y envío
+            </p>
+            <ul className="mt-3 flex flex-col gap-1">
+              <li>Zona de retiro (Pick up): Parque Batlle.</li>
+              <li>Zona de envío: Montevideo (sujeto a disponibilidad y cotización).</li>
+            </ul>
+          </Reveal>
         </div>
       </div>
     </div>

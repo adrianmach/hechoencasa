@@ -171,6 +171,7 @@ export function QuoteForm({
             </option>
           ))}
         </select>
+        <span className="text-xs text-text/50">Por el momento no trabajamos con fondant.</span>
       </label>
 
       <label className="flex flex-col gap-2">
