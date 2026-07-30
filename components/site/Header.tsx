@@ -65,10 +65,10 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="Hecho en Casa"
-            width={100}
-            height={100}
+            width={120}
+            height={120}
             priority
-            className="h-[70px] w-auto border-none bg-transparent object-contain outline-none md:h-[100px]"
+            className="h-[90px] w-auto border-none bg-transparent object-contain outline-none md:h-[120px]"
           />
         </Link>
 
