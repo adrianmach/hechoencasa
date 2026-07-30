@@ -68,7 +68,7 @@ export function Header() {
             width={120}
             height={120}
             priority
-            className="h-[90px] w-auto border-none bg-transparent object-contain outline-none md:h-[120px]"
+            className="h-[110px] w-auto border-none bg-transparent object-contain outline-none md:h-[120px]"
           />
         </Link>
 
