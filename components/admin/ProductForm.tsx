@@ -23,6 +23,7 @@ export function ProductForm({ product }: { product?: Product }) {
   const [priceType, setPriceType] = useState<Product['price_type']>(product?.price_type ?? 'fixed')
   const [price, setPrice] = useState(product?.price?.toString() ?? '')
   const [isActive, setIsActive] = useState(product?.is_active ?? true)
+  const [isFeatured, setIsFeatured] = useState(product?.is_featured ?? false)
   const [preview, setPreview] = useState(product?.image_url ?? '')
   const [pendingFile, setPendingFile] = useState<Blob | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -64,6 +65,7 @@ export function ProductForm({ product }: { product?: Product }) {
     formData.set('price_type', priceType)
     formData.set('price', priceType === 'fixed' ? price : '')
     formData.set('is_active', isActive ? 'on' : 'off')
+    formData.set('is_featured', isFeatured ? 'on' : 'off')
     formData.set('current_image_url', product?.image_url ?? '')
     if (pendingFile) {
       formData.set('image', pendingFile, 'product.jpg')
@@ -172,6 +174,15 @@ export function ProductForm({ product }: { product?: Product }) {
       <label className="flex items-center gap-2">
         <input type="checkbox" checked={isActive} onChange={(e) => setIsActive(e.target.checked)} />
         <span className="text-sm text-brown">Producto activo (visible en el sitio)</span>
+      </label>
+
+      <label className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          checked={isFeatured}
+          onChange={(e) => setIsFeatured(e.target.checked)}
+        />
+        <span className="text-sm text-brown">Destacado (aparece en &quot;Nuestros favoritos&quot;)</span>
       </label>
 
       {error && <p className="text-sm text-red-700">{error}</p>}

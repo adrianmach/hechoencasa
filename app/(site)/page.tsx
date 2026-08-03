@@ -4,7 +4,7 @@ import { ProductCarousel } from '@/components/site/ProductCarousel'
 import { Testimonials } from '@/components/site/Testimonials'
 import { Reveal } from '@/components/site/Reveal'
 import { GoldDivider } from '@/components/site/GoldDivider'
-import { getActiveProducts, getGallery, getSiteConfig, getTestimonials } from '@/lib/data'
+import { getActiveProducts, getFeaturedProducts, getGallery, getSiteConfig, getTestimonials } from '@/lib/data'
 import { whatsappLink } from '@/lib/whatsapp'
 import { goldButtonPrimary, goldButtonPrimaryDark, goldButtonSecondary, sectionLabel } from '@/lib/site/ui'
 
@@ -16,14 +16,14 @@ const STEPS = [
 ]
 
 export default async function HomePage() {
-  const [products, config, testimonials, gallery] = await Promise.all([
+  const [products, featured, config, testimonials, gallery] = await Promise.all([
     getActiveProducts(),
+    getFeaturedProducts(),
     getSiteConfig(),
     getTestimonials(),
     getGallery(),
   ])
 
-  const featured = products.slice(0, 6)
   const tortaProduct = products.find((p) => p.category === 'tortas')
   const galleryPreview = gallery.slice(0, 4)
 

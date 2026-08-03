@@ -60,6 +60,18 @@ export async function getActiveProducts(category?: ProductCategory): Promise<Pro
   return data ?? []
 }
 
+export async function getFeaturedProducts(): Promise<Product[]> {
+  const supabase = await createClient()
+  const { data } = await supabase
+    .from('products')
+    .select('*')
+    .eq('is_active', true)
+    .eq('is_featured', true)
+    .order('sort_order', { ascending: true })
+
+  return data ?? []
+}
+
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const supabase = await createClient()
   const { data } = await supabase

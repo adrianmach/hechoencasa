@@ -23,6 +23,7 @@ create table if not exists products (
   category text not null check (category in ('postres', 'alfajores', 'tortas', 'otros')),
   image_url text,
   is_active boolean default true,
+  is_featured boolean default false,
   sort_order integer default 0,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
@@ -33,6 +34,9 @@ create table if not exists products (
 alter table products drop constraint if exists products_category_check;
 alter table products add constraint products_category_check
   check (category in ('tortas', 'postres', 'alfajores', 'temporada', 'cookies'));
+
+-- Productos destacados: se muestran en la sección "Nuestros favoritos" del home
+alter table products add column if not exists is_featured boolean default false;
 
 -- Los postres ahora se cotizan por tamaño (14cm / 20cm / 26cm), ya no tienen precio fijo
 update products set price_type = 'quote', price = null where category = 'postres';

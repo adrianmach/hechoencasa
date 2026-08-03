@@ -39,6 +39,7 @@ export async function upsertProduct(formData: FormData) {
   const priceRaw = formData.get('price')?.toString()
   const price = priceType === 'fixed' && priceRaw ? Number(priceRaw) : null
   const isActive = formData.get('is_active') === 'on'
+  const isFeatured = formData.get('is_featured') === 'on'
   const imageFile = formData.get('image') as File | null
 
   if (!name || !category || !priceType) {
@@ -63,6 +64,7 @@ export async function upsertProduct(formData: FormData) {
         price,
         image_url: imageUrl,
         is_active: isActive,
+        is_featured: isFeatured,
       })
       .eq('id', id)
 
@@ -87,6 +89,7 @@ export async function upsertProduct(formData: FormData) {
       price,
       image_url: imageUrl,
       is_active: isActive,
+      is_featured: isFeatured,
       sort_order: (maxSort?.sort_order ?? 0) + 1,
     })
 
