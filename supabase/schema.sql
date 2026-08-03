@@ -28,11 +28,11 @@ create table if not exists products (
   updated_at timestamptz default now()
 );
 
--- Categorías reales del emprendimiento: tortas, postres, alfajores, temporada
+-- Categorías reales del emprendimiento: tortas, postres, alfajores, temporada, cookies
 -- (reemplaza el set anterior que incluía "otros")
 alter table products drop constraint if exists products_category_check;
 alter table products add constraint products_category_check
-  check (category in ('tortas', 'postres', 'alfajores', 'temporada'));
+  check (category in ('tortas', 'postres', 'alfajores', 'temporada', 'cookies'));
 
 -- Los postres ahora se cotizan por tamaño (14cm / 20cm / 26cm), ya no tienen precio fijo
 update products set price_type = 'quote', price = null where category = 'postres';

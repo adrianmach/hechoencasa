@@ -5,6 +5,7 @@ export const CATEGORY_LABEL: Record<ProductCategory, string> = {
   postres: 'Postre',
   alfajores: 'Alfajores',
   temporada: 'Temporada',
+  cookies: 'Cookies',
 }
 
 export const CATEGORY_COLOR: Record<ProductCategory, string> = {
@@ -12,4 +13,5 @@ export const CATEGORY_COLOR: Record<ProductCategory, string> = {
   postres: 'lavender',
   alfajores: 'sand',
   temporada: 'sage',
+  cookies: 'taupe',
 }

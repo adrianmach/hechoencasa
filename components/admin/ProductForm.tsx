@@ -12,6 +12,7 @@ const CATEGORIES: { value: Product['category']; label: string }[] = [
   { value: 'postres', label: 'Postres' },
   { value: 'alfajores', label: 'Alfajores' },
   { value: 'temporada', label: 'Temporada' },
+  { value: 'cookies', label: 'Cookies' },
 ]
 
 export function ProductForm({ product }: { product?: Product }) {

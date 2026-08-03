@@ -1,5 +1,5 @@
 export type PriceType = 'fixed' | 'quote'
-export type ProductCategory = 'tortas' | 'postres' | 'alfajores' | 'temporada'
+export type ProductCategory = 'tortas' | 'postres' | 'alfajores' | 'temporada' | 'cookies'
 
 export interface Product {
   id: string

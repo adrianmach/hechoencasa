@@ -10,6 +10,7 @@ const CATEGORIES: { value: ProductCategory | ''; label: string }[] = [
   { value: 'postres', label: CATEGORY_LABEL.postres },
   { value: 'alfajores', label: CATEGORY_LABEL.alfajores },
   { value: 'temporada', label: CATEGORY_LABEL.temporada },
+  { value: 'cookies', label: CATEGORY_LABEL.cookies },
 ]
 
 const ACTIVE_CLASS: Record<string, string> = {
@@ -17,6 +18,7 @@ const ACTIVE_CLASS: Record<string, string> = {
   lavender: 'border-lavender bg-lavender text-text',
   sand: 'border-sand bg-sand text-text',
   sage: 'border-sage bg-sage text-text',
+  taupe: 'border-taupe bg-taupe text-text',
 }
 
 export function CategoryFilter({ active }: { active: string }) {
